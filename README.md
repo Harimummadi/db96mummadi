@@ -1,14 +1,5 @@
-# fwb96mummadi
+# db96mummadi
 
-I love Nature
-
-1. Giraffe
-  - food(string)
-  - height(number)
-  - age(number)
-   
-2. Honda
-  - model(string)
-  - year(number)
-  - speed(number)
+My primary Interest is to explore the new places.
+<a href="https://db96mummadi.herokuapp.com/">Link to heroku server page</a>
    
