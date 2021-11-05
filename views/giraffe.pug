@@ -1,0 +1,16 @@
+extends layout
+
+block content
+ h2= title 
+ - var brands = [{brand: 'Tommy Hilfigher'},{brand: 'Old Navy'},{brand: 'Banana Republic'},{brand: 'Hollister'},{brand:'Diesel'}, {brand: 'US Polo'},{brand:'Woodland'}];
+      
+ div(class='row')
+    div(class='container-fluid')
+        div(class='row')
+            each x,i in brands 
+                div(class="col-sm-2" onclick="buy("+i+")") #{x.brand}
+
+ script.
+    function buy(num){
+        alert(`You purchased item ${num}`);
+    }

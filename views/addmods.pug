@@ -1,0 +1,22 @@
+extends layout 
+
+block content 
+ h1= title 
+ - let queryParams= query 
+ h6 Number of Rows = #{queryParams.rows} and Number of columns =  #{queryParams.cols}
+     if !Number.isInteger(Number(queryParams.rows))
+        p rows mentioned below are not exact
+     else if !Number.isInteger(Number(queryParams.cols))
+        p columns below displayed are not exact 
+     else if queryParams.rows < 0 || queryParams.rows > 5
+        p rows mentioned are in the range of one to four
+     else if queryParams.cols < 0 || queryParams.cols > 5
+        p colums mentioned are in range of one to four
+     else
+        table           
+            - for(let i=0; i<queryParams.rows; i++) {
+               tr
+                 - for(let t=0; t<queryParams.cols; t++) {
+                     td= i+t
+                 -}              
+            - }  
