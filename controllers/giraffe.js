@@ -1,8 +1,15 @@
 var giraffe = require('../models/giraffe');
 // List of all giraffes
-exports.giraffe_list = function(req, res) {
-res.send('NOT IMPLEMENTED: giraffe list');
-};
+exports.giraffe_list = async function(req, res) {
+    try{
+    thegiraffe = await giraffe.find();
+    res.send(thegiraffe);
+    }
+    catch(err){
+    res.status(500);
+    res.send(`{"error": ${err}}`);
+    }
+    };
 // for a specific giraffe.
 exports.giraffe_detail = function(req, res) {
 res.send('NOT IMPLEMENTED: giraffe detail: ' + req.params.id);
