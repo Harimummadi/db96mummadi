@@ -24,17 +24,17 @@ var app = express();
 // We can seed the collection if needed on server start
 async function recreateDB(){
   // Delete everything await Costume.deleteMany();
-  let instance1 = new giraffe({brand:"amul"});
+  let instance1 = new giraffe({brand:"Tommy Hilfiger"});
   instance1.save( function(err,doc) {
   if(err) return console.error(err);
   console.log("First object saved")
   });
-  let instance2 = new giraffe({brand:"muscati"});
+  let instance2 = new giraffe({brand:"Old Navy"});
   instance2.save( function(err,doc) {
   if(err) return console.error(err);
   console.log("Second object saved")
   });
-  let instance3 = new giraffe({brand:"kwality walls"});
+  let instance3 = new giraffe({brand:"Banana Republic"});
   instance3.save( function(err,doc) {
   if(err) return console.error(err);
   console.log("Third object saved")
