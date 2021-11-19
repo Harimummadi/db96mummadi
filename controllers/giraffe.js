@@ -88,3 +88,72 @@ exports.giraffe_detail = async function(req, res) {
         res.send(`{"error": document for id ${req.params.id} not found`); 
     } 
 };
+
+// Handle giraffe delete on DELETE. 
+exports.giraffe_delete = async function(req, res) { 
+    console.log("delete "  + req.params.id) 
+    try { 
+        result = await giraffe.findByIdAndDelete( req.params.id) 
+        console.log("Removed " + result) 
+        res.send(result) 
+    } catch (err) { 
+        res.status(500) 
+        res.send(`{"error": Error deleting ${err}}`); 
+    } 
+}; 
+
+ // Handle a show one view with id specified by query 
+ exports.giraffe_view_one_Page = async function(req, res) { 
+    console.log("single view for id "  + req.query.id) 
+    try{ 
+        result = await giraffe.findById( req.query.id) 
+        res.render('giraffedetail',  
+{ title: 'giraffe Detail', toShow: result }); 
+    } 
+    catch(err){ 
+        res.status(500) 
+        res.send(`{'error': '${err}'}`); 
+    } 
+}; 
+
+ // Handle building the view for creating a giraffe. 
+// No body, no in path parameter, no query. 
+// Does not need to be async 
+exports.giraffe_create_Page =  function(req, res) { 
+    console.log("create view") 
+    try{ 
+        res.render('giraffecreate', { title: 'giraffe Create'}); 
+    } 
+    catch(err){ 
+        res.status(500) 
+        res.send(`{'error': '${err}'}`); 
+    } 
+}; 
+
+// Handle building the view for updating a giraffe. 
+// query provides the id 
+exports.giraffe_update_Page =  async function(req, res) { 
+    console.log("update view for item "+req.query.id) 
+    try{ 
+        let result = await giraffe.findById(req.query.id) 
+        res.render('giraffeupdate', { title: 'giraffe Update', toShow: result }); 
+    } 
+    catch(err){ 
+        res.status(500) 
+        res.send(`{'error': '${err}'}`); 
+    } 
+}; 
+
+// Handle a delete one view with id from query 
+exports.giraffe_delete_Page = async function(req, res) { 
+    console.log("Delete view for id "  + req.query.id) 
+    try{ 
+        result = await giraffe.findById(req.query.id) 
+        res.render('giraffedelete', { title: 'giraffe Delete', toShow: 
+result }); 
+    } 
+    catch(err){ 
+        res.status(500) 
+        res.send(`{'error': '${err}'}`); 
+    } 
+}; 

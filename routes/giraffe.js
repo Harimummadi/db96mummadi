@@ -13,3 +13,16 @@ router.get('/', function(req, res, next) {
 });
 
 module.exports = router;
+
+/* GET detail giraffe page */ 
+router.get('/detail', giraffe_controlers.giraffe_view_one_Page); 
+
+/* GET create giraffe page */ 
+router.get('/create', giraffe_controlers.giraffe_create_Page); 
+
+/* GET create update page */ 
+router.get('/update', giraffe_controlers.giraffe_update_Page); 
+
+/* GET create giraffe page */ 
+router.get('/delete', giraffe_controlers.giraffe_delete_Page); 
+ 

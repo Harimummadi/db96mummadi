@@ -1,0 +1,24 @@
+extends layout 
+ 
+block content 
+  h1= title  
+  if (toShow == null) 
+    h2 No instance to show detail
+  else   
+  - let giraffeid = toShow._id 
+  - let brand = toShow.brand 
+  - let cost = toShow.cost 
+  - let size = toShow.size 
+  div 
+    div.row 
+      div(class='giraffeAttr mr-3') giraffe ID is: 
+      div #{giraffeid} 
+    div.row 
+      div(class='giraffeAttr mr-3') giraffe Type is: 
+      div #{brand} 
+    div.row 
+      div(class='giraffeAttr mr-3') giraffe Size is: 
+      div #{size} 
+    div.row 
+      div(class='giraffeAttr mr-3') giraffe Cost is: 
+      div #{cost} 
