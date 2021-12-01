@@ -23,8 +23,9 @@ var resourceRouter = require('./routes/resource');
 var app = express();
 
 // We can seed the collection if needed on server start
-async function recreateDB(){
-  // Delete everything await Costume.deleteMany();
+ async function recreateDB(){
+  // Delete everything await 
+  giraffe.deleteMany();
   let instance1 = new giraffe({brand:"Tommy Hilfiger"});
   instance1.save( function(err,doc) {
   if(err) return console.error(err);

@@ -1,21 +1,34 @@
 extends layout
 
 block content
- h2= title 
- - var brands = results
-      
- div(class='row')
-    div(class='container-fluid')
-        div(class='row m-1')
-            each x,i in brands 
-                - let destination = `dispatch(\"/giraffe/update?id=${x._id}\")`
-                div(class="col-sm-2" onclick="buy("+i+")") #{x.brand}
-                button.btn( class="btn-primary ml-1", onclick= destination) Update
+  -let create = `dispatch(\"giraffe/create\")`
+  button.btn(class="btn-primary m1-1", onclick=create) Create
+  h1= title
+  p Welcome to the giraffe pug
+  div(class="container-fluid")
+        div(class="row")
+            -
+                let giraffe = results
+                
+  div(class="container-fluid") 
+    div(class="row  m-1") 
+      each item in giraffe 
+       - let destination = `dispatch(\"/giraffe/update?id=${item._id}\")` 
+       - let detail=`dispatch(\"/giraffe/detail?id=${item._id}\")`
+       - let de=`dispatch(\"/giraffe/delete?id=${item._id}\")`
 
- script.
-    function buy(num){
-        alert(`You purchased item ${num}`);
-    }
-    function dispatch(path){
-        window.location.href=path
-    }
+        div(class="row-sm-2", class="m-1") giraffe #{item.brand}(#{item.size}) is #{item.cost}
+            button.btn( class="btn-primary ml-1", onclick= destination) Update
+            button.btn( class="btn-secondary ml-2", onclick=detail ) Get Detail page
+            button.btn( class="btn-warning ml-2", onclick=de ) Delete
+            
+        script.                
+            function buy(itemNo)
+            {
+                  alert(`you purchased Item ${itemNo+1}`)
+            }
+        script. 
+          function dispatch(path)
+          { 
+              window.location.href=path 
+          }
